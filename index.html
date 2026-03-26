@@ -5,12 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Unternehmensgruppe Probst</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg: #f5f2ef;
-      --text: #2f2f2f;
-      --muted: #7d7772;
-      --line: rgba(47, 47, 47, 0.12);
+      --bg: #f6f3f0;
+      --text: #2b2b2d;
+      --muted: #78736e;
+      --line: rgba(43, 43, 45, 0.11);
 
       --haus: #9a4b57;
       --objekt: #7b8cc8;
@@ -22,7 +26,10 @@
       --bar-text: #ffffff;
       --bar-muted: rgba(255, 255, 255, 0.76);
 
-      --shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+      --shadow-soft: 0 14px 34px rgba(0, 0, 0, 0.06);
+      --shadow-hover: 0 18px 42px rgba(0, 0, 0, 0.1);
+      --radius-pill: 999px;
+      --transition: 220ms ease;
     }
 
     * {
@@ -38,7 +45,7 @@
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: "Inter", Arial, Helvetica, sans-serif;
       color: var(--text);
       background:
         radial-gradient(circle at 15% 20%, rgba(154, 75, 87, 0.04), transparent 26%),
@@ -83,11 +90,12 @@
       align-items: center;
       gap: 5px;
       cursor: pointer;
-      transition: transform 0.18s ease, background 0.18s ease;
+      transition: transform var(--transition), background var(--transition), border-color var(--transition);
     }
 
     .menu-btn:hover {
       background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.22);
       transform: translateY(-1px);
     }
 
@@ -196,6 +204,12 @@
       padding: 18px;
       font-size: 18px;
       font-weight: 700;
+      transition: background var(--transition), transform var(--transition);
+    }
+
+    .drawer-link:hover {
+      background: rgba(255,255,255,0.06);
+      transform: translateX(2px);
     }
 
     .drawer-note {
@@ -219,7 +233,7 @@
       flex: 1;
       width: min(1560px, calc(100% - 72px));
       margin: 0 auto;
-      padding: 64px 0 90px;
+      padding: 70px 0 96px;
     }
 
     .companies {
@@ -230,7 +244,7 @@
       justify-content: center;
       align-items: flex-start;
       gap: 92px;
-      transform: translateX(-34px);
+      transform: translateX(-37px);
     }
 
     .company {
@@ -238,6 +252,15 @@
       max-width: 100%;
       text-align: center;
       --accent: #888;
+      animation: fadeUp 0.7s ease both;
+    }
+
+    .company:nth-child(2) {
+      animation-delay: 0.08s;
+    }
+
+    .company:nth-child(3) {
+      animation-delay: 0.16s;
     }
 
     .company.haus { --accent: var(--haus); }
@@ -253,7 +276,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .logo-area img {
@@ -262,7 +285,13 @@
       object-fit: contain;
       display: block;
       margin: 0 auto;
-      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.05));
+      filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.04));
+      transition: transform var(--transition), filter var(--transition);
+    }
+
+    .company:hover .logo-area img {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.06));
     }
 
     .company summary {
@@ -272,6 +301,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      outline: none;
     }
 
     .company summary::-webkit-details-marker {
@@ -281,11 +311,11 @@
     .company-title {
       margin: 0;
       font-size: clamp(19px, 1.35vw, 24px);
-      line-height: 1.14;
+      line-height: 1.16;
       font-weight: 800;
       color: var(--accent);
       text-align: center;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.025em;
       white-space: nowrap;
     }
 
@@ -296,12 +326,18 @@
       gap: 10px;
       padding: 10px 14px;
       border: 1px solid var(--accent);
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       color: var(--accent);
       font-size: 13px;
       font-weight: 700;
       background: transparent;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
+    }
+
+    .company summary:hover .open-hint {
+      transform: translateY(-1px);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.35);
     }
 
     .open-hint::after {
@@ -313,7 +349,7 @@
     }
 
     .company details[open] .open-hint {
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
     }
 
     .company details[open] .open-hint::after {
@@ -325,7 +361,7 @@
       display: grid;
       grid-template-rows: 0fr;
       transition: grid-template-rows 0.42s ease;
-      margin-top: 18px;
+      margin-top: 20px;
     }
 
     .company details[open] .panel-wrap {
@@ -338,9 +374,9 @@
     }
 
     .panel {
-      transform: translateX(42px);
+      transform: translateX(34px);
       opacity: 0;
-      transition: transform 0.38s ease, opacity 0.3s ease;
+      transition: transform 0.36s ease, opacity 0.28s ease;
       will-change: transform, opacity;
     }
 
@@ -354,11 +390,11 @@
       margin: 0 auto 24px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
     }
 
     .detail {
-      padding-top: 14px;
+      padding-top: 15px;
       border-top: 1px solid var(--line);
       text-align: center;
     }
@@ -373,18 +409,20 @@
     }
 
     .value {
-      font-size: 17px;
-      line-height: 1.5;
+      font-size: 16px;
+      line-height: 1.55;
       font-weight: 500;
       text-align: center;
     }
 
     .value a {
       text-decoration: none;
+      transition: opacity var(--transition);
     }
 
     .value a:hover {
       text-decoration: underline;
+      text-underline-offset: 3px;
     }
 
     .actions {
@@ -398,7 +436,7 @@
 
     .btn {
       min-height: 58px;
-      border-radius: 999px;
+      border-radius: var(--radius-pill);
       padding: 14px 18px;
       text-decoration: none;
       display: flex;
@@ -407,7 +445,7 @@
       gap: 12px;
       font-size: 15px;
       font-weight: 700;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform var(--transition), box-shadow var(--transition), background var(--transition);
       border: 1.5px solid var(--accent);
       color: var(--text);
       background: transparent;
@@ -415,7 +453,8 @@
 
     .btn:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      box-shadow: var(--shadow-soft);
+      background: rgba(255,255,255,0.35);
     }
 
     .btn-icon {
@@ -462,9 +501,20 @@
       justify-content: center;
       color: var(--bar-text);
       text-align: center;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: -0.01em;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 1460px) {
@@ -474,7 +524,7 @@
 
       .companies {
         gap: 56px;
-        transform: translateX(-30px);
+        transform: translateX(-20px);
       }
 
       .company {
@@ -502,14 +552,14 @@
 
       .page {
         width: min(760px, calc(100% - 32px));
-        padding: 34px 0 60px;
+        padding: 38px 0 64px;
       }
 
       .companies {
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 86px;
+        gap: 84px;
         transform: none;
       }
 
@@ -529,11 +579,11 @@
 
       .logo-area {
         height: auto;
-        margin-bottom: 14px;
+        margin-bottom: 16px;
       }
 
       .logo-area img {
-        max-height: 140px;
+        max-height: 138px;
       }
     }
 
@@ -558,15 +608,15 @@
 
       .page {
         width: calc(100% - 24px);
-        padding: 24px 0 44px;
+        padding: 24px 0 48px;
       }
 
       .companies {
-        gap: 96px;
+        gap: 104px;
       }
 
       .company-title {
-        font-size: 24px;
+        font-size: 22px;
       }
 
       .company,
@@ -577,7 +627,12 @@
       }
 
       .logo-area img {
-        max-height: 132px;
+        max-height: 126px;
+      }
+
+      .btn {
+        min-height: 56px;
+        font-size: 14px;
       }
 
       .footer-inner {
