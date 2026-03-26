@@ -587,59 +587,79 @@
       }
     }
 
-    @media (max-width: 720px) {
-      .topbar {
-        height: 74px;
-      }
+@media (max-width: 720px) {
+  .topbar {
+    height: 74px;
+  }
 
-      .topbar-inner {
-        width: calc(100% - 20px);
-        grid-template-columns: 56px 1fr;
-      }
+  .topbar-inner {
+    width: calc(100% - 20px);
+    grid-template-columns: 56px 1fr;
+  }
 
-      .topbar-title {
-        font-size: 18px;
-        text-align: left;
-      }
+  .topbar-title {
+    font-size: 18px;
+    text-align: left;
+  }
 
-      .topbar-status {
-        display: none;
-      }
+  .topbar-status {
+    display: none;
+  }
 
-      .page {
-        width: calc(100% - 24px);
-        padding: 24px 0 48px;
-      }
+  .page {
+    width: calc(100% - 24px);
+    padding: 42px 0 48px;
+  }
 
-      .companies {
-        gap: 104px;
-      }
+  .companies {
+    gap: 92px;
+  }
 
-      .company-title {
-        font-size: 22px;
-      }
+  .company {
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    padding-bottom: 10px;
+  }
 
-      .company,
-      .details-block,
-      .actions {
-        width: 100%;
-        max-width: 100%;
-      }
+  .company:not(:last-child)::after {
+    content: "";
+    display: block;
+    width: min(82%, 320px);
+    height: 1px;
+    margin: 44px auto 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(43, 43, 45, 0.10),
+      transparent
+    );
+  }
 
-      .logo-area img {
-        max-height: 126px;
-      }
+  .company-title {
+    font-size: 22px;
+  }
 
-      .btn {
-        min-height: 56px;
-        font-size: 14px;
-      }
+  .details-block,
+  .actions {
+    width: 100%;
+    max-width: 100%;
+  }
 
-      .footer-inner {
-        min-height: 74px;
-        font-size: 14px;
-      }
-    }
+  .logo-area img {
+    max-height: 126px;
+  }
+
+  .btn {
+    min-height: 56px;
+    font-size: 14px;
+  }
+
+  .footer-inner {
+    min-height: 74px;
+    font-size: 14px;
+  }
+}
   </style>
 </head>
 <body>
