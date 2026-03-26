@@ -35,14 +35,14 @@
     }
 
     .page {
-      width: min(1240px, calc(100% - 56px));
+      width: min(1280px, calc(100% - 64px));
       margin: 0 auto;
-      padding: 42px 0 60px;
+      padding: 38px 0 60px;
     }
 
     .hero {
       text-align: center;
-      margin-bottom: 42px;
+      margin-bottom: 78px;
     }
 
     .hero h1 {
@@ -55,21 +55,13 @@
 
     .companies {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 60px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 56px;
+      align-items: start;
     }
 
     .company {
       text-align: center;
-    }
-
-    /* leichte Premium-Verschiebung */
-    .company.haus {
-      transform: translateX(-20px);
-    }
-
-    .company.vermoegen {
-      transform: translateX(20px);
     }
 
     .logo-area {
@@ -77,7 +69,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
 
     .logo-area img {
@@ -85,6 +77,7 @@
       max-width: 100%;
       object-fit: contain;
       filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.05));
+      display: block;
     }
 
     .company h2 {
@@ -157,7 +150,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      transition: 0.2s;
+      transition: transform 0.2s, opacity 0.2s;
     }
 
     .btn:hover {
@@ -182,20 +175,36 @@
     }
 
     .btn-mail {
-      border: 1px solid rgba(0,0,0,0.15);
+      border: 1px solid rgba(0, 0, 0, 0.15);
       color: var(--text);
+      background: transparent;
     }
 
-    /* Mobile */
     @media (max-width: 900px) {
-      .companies {
-        grid-template-columns: 1fr;
-        gap: 40px;
+      .page {
+        width: min(760px, calc(100% - 32px));
+        padding: 28px 0 48px;
       }
 
-      .company.haus,
-      .company.vermoegen {
-        transform: none;
+      .hero {
+        margin-bottom: 42px;
+      }
+
+      .companies {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+
+      .logo-area {
+        height: auto;
+      }
+
+      .logo-area img {
+        max-height: 160px;
+      }
+
+      .company h2 {
+        white-space: normal;
       }
     }
   </style>
@@ -209,10 +218,9 @@
 
     <section class="companies">
 
-      <!-- Hausverwaltung -->
       <div class="company haus">
         <div class="logo-area">
-          <img src="Logo_Hausverwaltung_Probst_RGB.png" />
+          <img src="Logo_Hausverwaltung_Probst_RGB.png" alt="Logo Hausverwaltung Roger Probst" />
         </div>
 
         <h2>Hausverwaltung Roger Probst</h2>
@@ -228,32 +236,28 @@
           <div class="detail">
             <div class="label">E-Mail</div>
             <div class="value">
-              <a href="mailto:haus@verwaltung-probst.de">
-                haus@verwaltung-probst.de
-              </a>
+              <a href="mailto:haus@verwaltung-probst.de">haus@verwaltung-probst.de</a>
             </div>
           </div>
 
           <div class="detail">
             <div class="label">Adresse</div>
             <div class="value">
-              Daimlerstraße 33<br>87439 Kempten
+              Spechtweg 12<br />
+              87439 Kempten
             </div>
           </div>
         </div>
 
         <div class="actions">
           <a class="btn btn-call" href="tel:+4917660393610">Jetzt anrufen</a>
-          <a class="btn btn-mail" href="mailto:haus@verwaltung-probst.de">
-            Jetzt E-Mail schreiben
-          </a>
+          <a class="btn btn-mail" href="mailto:haus@verwaltung-probst.de">Jetzt E-Mail schreiben</a>
         </div>
       </div>
 
-      <!-- Objektverwaltung -->
       <div class="company objekt">
         <div class="logo-area">
-          <img src="Logo_Objektverwaltung_Probst_RGB.png" />
+          <img src="Logo_Objektverwaltung_Probst_RGB.png" alt="Logo Objektverwaltung Probst GmbH" />
         </div>
 
         <h2>Objektverwaltung Probst GmbH</h2>
@@ -269,32 +273,28 @@
           <div class="detail">
             <div class="label">E-Mail</div>
             <div class="value">
-              <a href="mailto:objekt@verwaltung-probst.de">
-                objekt@verwaltung-probst.de
-              </a>
+              <a href="mailto:objekt@verwaltung-probst.de">objekt@verwaltung-probst.de</a>
             </div>
           </div>
 
           <div class="detail">
             <div class="label">Adresse</div>
             <div class="value">
-              Daimlerstraße 33<br>87439 Kempten
+              Daimlerstraße 33<br />
+              87437 Kempten
             </div>
           </div>
         </div>
 
         <div class="actions">
           <a class="btn btn-call" href="tel:+4917660393610">Jetzt anrufen</a>
-          <a class="btn btn-mail" href="mailto:objekt@verwaltung-probst.de">
-            Jetzt E-Mail schreiben
-          </a>
+          <a class="btn btn-mail" href="mailto:objekt@verwaltung-probst.de">Jetzt E-Mail schreiben</a>
         </div>
       </div>
 
-      <!-- Vermögensverwaltung -->
       <div class="company vermoegen">
         <div class="logo-area">
-          <img src="Logo_Vermoegensverwaltung_Probst_RGB.png" />
+          <img src="Logo_Vermoegensverwaltung_Probst_RGB.png" alt="Logo Vermögensverwaltung Probst GmbH" />
         </div>
 
         <h2>Vermögensverwaltung Probst GmbH</h2>
@@ -310,25 +310,22 @@
           <div class="detail">
             <div class="label">E-Mail</div>
             <div class="value">
-              <a href="mailto:vermoegen@verwaltung-probst.de">
-                vermoegen@verwaltung-probst.de
-              </a>
+              <a href="mailto:vermoegen@verwaltung-probst.de">vermoegen@verwaltung-probst.de</a>
             </div>
           </div>
 
           <div class="detail">
             <div class="label">Adresse</div>
             <div class="value">
-              Daimlerstraße 33<br>87439 Kempten
+              Daimlerstraße 33<br />
+              87437 Kempten
             </div>
           </div>
         </div>
 
         <div class="actions">
           <a class="btn btn-call" href="tel:+4917660393610">Jetzt anrufen</a>
-          <a class="btn btn-mail" href="mailto:vermoegen@verwaltung-probst.de">
-            Jetzt E-Mail schreiben
-          </a>
+          <a class="btn btn-mail" href="mailto:vermoegen@verwaltung-probst.de">Jetzt E-Mail schreiben</a>
         </div>
       </div>
 
