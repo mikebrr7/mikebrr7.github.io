@@ -356,19 +356,19 @@
       transform: translateY(-1px) rotate(90deg);
     }
 
-    .panel-wrap {
+     .panel-wrap {
       overflow: hidden;
       max-height: 0;
       opacity: 0;
       margin-top: 0;
       transition:
-        max-height 0.48s ease,
-        opacity 0.24s ease,
-        margin-top 0.24s ease;
+        max-height 0.62s ease,
+        opacity 0.28s ease,
+        margin-top 0.28s ease;
     }
     
     .company details[open] .panel-wrap {
-      max-height: 900px;
+      max-height: 1100px;
       opacity: 1;
       margin-top: 20px;
     }
@@ -378,15 +378,57 @@
     }
     
     .panel {
-      transform: translateX(34px);
+      transform: translateX(18px);
       opacity: 0;
-      transition: transform 0.36s ease, opacity 0.28s ease;
+      transition: transform 0.52s ease, opacity 0.42s ease;
       will-change: transform, opacity;
     }
     
     .company details[open] .panel {
       transform: translateX(0);
       opacity: 1;
+    }
+    
+    /* Einzelne Zeilen nacheinander */
+    .details-block .detail,
+    .actions .btn {
+      opacity: 0;
+      transform: translateX(24px);
+      transition:
+        opacity 0.42s ease,
+        transform 0.52s ease;
+      will-change: transform, opacity;
+    }
+    
+    .company details[open] .details-block .detail,
+    .company details[open] .actions .btn {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    
+    /* Staffelung */
+    .company details[open] .details-block .detail:nth-child(1) {
+      transition-delay: 0.08s;
+    }
+    
+    .company details[open] .details-block .detail:nth-child(2) {
+      transition-delay: 0.16s;
+    }
+    
+    .company details[open] .details-block .detail:nth-child(3) {
+      transition-delay: 0.24s;
+    }
+    
+    .company details[open] .actions .btn:nth-child(1) {
+      transition-delay: 0.32s;
+    }
+    
+    .company details[open] .actions .btn:nth-child(2) {
+      transition-delay: 0.40s;
+    }
+    
+    .company details[open] .actions .btn:nth-child(3) {
+      transition-delay: 0.48s;
     }
 
     .details-block {
