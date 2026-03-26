@@ -559,7 +559,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 84px;
+        gap: 72px;
         transform: none;
       }
 
@@ -587,79 +587,79 @@
       }
     }
 
-@media (max-width: 720px) {
-  .topbar {
-    height: 74px;
-  }
-
-  .topbar-inner {
-    width: calc(100% - 20px);
-    grid-template-columns: 56px 1fr;
-  }
-
-  .topbar-title {
-    font-size: 18px;
-    text-align: left;
-  }
-
-  .topbar-status {
-    display: none;
-  }
-
-  .page {
-    width: calc(100% - 24px);
-    padding: 42px 0 48px;
-  }
-
-  .companies {
-    gap: 92px;
-  }
-
-  .company {
-    position: relative;
-    width: 100%;
-    max-width: 100%;
-    padding-bottom: 10px;
-  }
-
-  .company:not(:last-child)::after {
-    content: "";
-    display: block;
-    width: min(82%, 320px);
-    height: 1px;
-    margin: 44px auto 0;
-    background: linear-gradient(
-      to right,
-      transparent,
-      rgba(43, 43, 45, 0.10),
-      transparent
-    );
-  }
-
-  .company-title {
-    font-size: 22px;
-  }
-
-  .details-block,
-  .actions {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .logo-area img {
-    max-height: 126px;
-  }
-
-  .btn {
-    min-height: 56px;
-    font-size: 14px;
-  }
-
-  .footer-inner {
-    min-height: 74px;
-    font-size: 14px;
-  }
-}
+    @media (max-width: 720px) {
+      .topbar {
+        height: 74px;
+      }
+    
+      .topbar-inner {
+        width: calc(100% - 20px);
+        grid-template-columns: 56px 1fr;
+      }
+    
+      .topbar-title {
+        font-size: 18px;
+        text-align: left;
+      }
+    
+      .topbar-status {
+        display: none;
+      }
+    
+      .page {
+        width: calc(100% - 24px);
+        padding: 42px 0 48px;
+      }
+    
+      .companies {
+        gap: 92px;
+      }
+    
+      .company {
+        position: relative;
+        width: 100%;
+        max-width: 100%;
+        padding-bottom: 10px;
+      }
+    
+      .company:not(:last-child)::after {
+        content: "";
+        display: block;
+        width: min(82%, 320px);
+        height: 1px;
+        margin: 32px auto 0;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(43, 43, 45, 0.10),
+          transparent
+        );
+      }
+    
+      .company-title {
+        font-size: 22px;
+      }
+    
+      .details-block,
+      .actions {
+        width: 100%;
+        max-width: 100%;
+      }
+    
+      .logo-area img {
+        max-height: 126px;
+      }
+    
+      .btn {
+        min-height: 56px;
+        font-size: 14px;
+      }
+    
+      .footer-inner {
+        min-height: 74px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
