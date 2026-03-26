@@ -111,10 +111,14 @@
     .topbar-title {
       text-align: center;
       color: var(--bar-text);
-      font-size: 28px;
+      font-size: clamp(20px, 2vw, 28px);
       font-weight: 800;
       letter-spacing: -0.03em;
-      white-space: nowrap;
+      white-space: normal;
+      line-height: 1.1;
+      max-width: 100%;
+      overflow-wrap: break-word;
+      text-wrap: balance;
     }
 
     .topbar-status {
@@ -646,10 +650,13 @@
         width: calc(100% - 20px);
         grid-template-columns: 56px 1fr;
       }
-
+      
       .topbar-title {
         font-size: 18px;
         text-align: left;
+        white-space: normal;
+        line-height: 1.1;
+        max-width: 220px;
       }
 
       .topbar-status {
