@@ -230,7 +230,7 @@
       justify-content: center;
       align-items: flex-start;
       gap: 92px;
-      transform: translateX(-36px);
+      transform: translateX(-56px);
     }
 
     .company {
@@ -243,6 +243,10 @@
     .company.haus { --accent: var(--haus); }
     .company.objekt { --accent: var(--objekt); }
     .company.vermoegen { --accent: var(--vermoegen); }
+
+    .company-inner {
+      transform: translateX(-10px);
+    }
 
     .logo-area {
       height: 170px;
@@ -300,36 +304,49 @@
       transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
-    .company details[open] .open-hint {
-      box-shadow: var(--shadow);
-    }
-
     .open-hint::after {
       content: "›";
       font-size: 18px;
       line-height: 1;
       transform: translateY(-1px);
+      transition: transform 0.25s ease;
+    }
+
+    .company details[open] .open-hint {
+      box-shadow: var(--shadow);
+    }
+
+    .company details[open] .open-hint::after {
+      transform: translateY(-1px) rotate(90deg);
     }
 
     .panel-wrap {
       overflow: hidden;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.42s ease;
       margin-top: 18px;
     }
 
+    .company details[open] .panel-wrap {
+      grid-template-rows: 1fr;
+    }
+
+    .panel-clip {
+      min-height: 0;
+      overflow: hidden;
+    }
+
     .panel {
-      transform: translateX(36px);
+      transform: translateX(42px);
       opacity: 0;
-      max-height: 0;
-      transition:
-        transform 0.35s ease,
-        opacity 0.35s ease,
-        max-height 0.45s ease;
+      transition: transform 0.38s ease, opacity 0.3s ease;
+      will-change: transform, opacity;
     }
 
     .company details[open] .panel {
       transform: translateX(0);
       opacity: 1;
-      max-height: 900px;
     }
 
     .details-block {
@@ -376,6 +393,7 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
+      padding-bottom: 2px;
     }
 
     .btn {
@@ -456,11 +474,15 @@
 
       .companies {
         gap: 56px;
-        transform: translateX(-24px);
+        transform: translateX(-30px);
       }
 
       .company {
         width: 350px;
+      }
+
+      .company-inner {
+        transform: translateX(-6px);
       }
 
       .company-title {
@@ -487,7 +509,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 76px;
+        gap: 86px;
         transform: none;
       }
 
@@ -495,6 +517,10 @@
         width: 100%;
         max-width: 460px;
         margin: 0 auto;
+      }
+
+      .company-inner {
+        transform: none;
       }
 
       .company-title {
@@ -536,7 +562,7 @@
       }
 
       .companies {
-        gap: 88px;
+        gap: 96px;
       }
 
       .company-title {
@@ -598,117 +624,129 @@
   <main class="page" id="kontakt">
     <section class="companies">
       <article class="company haus">
-        <div class="logo-area">
-          <img src="Logo_Hausverwaltung_Probst_RGB.png" alt="Logo Hausverwaltung Roger Probst" />
-        </div>
+        <div class="company-inner">
+          <div class="logo-area">
+            <img src="Logo_Hausverwaltung_Probst_RGB.png" alt="Logo Hausverwaltung Roger Probst" />
+          </div>
 
-        <details>
-          <summary>
-            <h2 class="company-title">Hausverwaltung Roger Probst</h2>
-            <div class="open-hint">Kontakt anzeigen</div>
-          </summary>
+          <details>
+            <summary>
+              <h2 class="company-title">Hausverwaltung Roger Probst</h2>
+              <div class="open-hint">Kontakt anzeigen</div>
+            </summary>
 
-          <div class="panel-wrap">
-            <div class="panel">
-              <div class="details-block">
-                <div class="detail">
-                  <div class="label">Telefon</div>
-                  <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">E-Mail</div>
-                  <div class="value"><a href="mailto:haus@verwaltung-probst.de">haus@verwaltung-probst.de</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">Adresse</div>
-                  <div class="value">Spechtweg 12<br />87439 Kempten</div>
-                </div>
-              </div>
+            <div class="panel-wrap">
+              <div class="panel-clip">
+                <div class="panel">
+                  <div class="details-block">
+                    <div class="detail">
+                      <div class="label">Telefon</div>
+                      <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">E-Mail</div>
+                      <div class="value"><a href="mailto:haus@verwaltung-probst.de">haus@verwaltung-probst.de</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">Adresse</div>
+                      <div class="value">Spechtweg 12<br />87439 Kempten</div>
+                    </div>
+                  </div>
 
-              <div class="actions">
-                <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
-                <a class="btn" href="mailto:haus@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
-                <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Spechtweg+12,+87439+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  <div class="actions">
+                    <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
+                    <a class="btn" href="mailto:haus@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
+                    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Spechtweg+12,+87439+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </article>
 
       <article class="company objekt">
-        <div class="logo-area">
-          <img src="Logo_Objektverwaltung_Probst_RGB.png" alt="Logo Objektverwaltung Probst GmbH" />
-        </div>
+        <div class="company-inner">
+          <div class="logo-area">
+            <img src="Logo_Objektverwaltung_Probst_RGB.png" alt="Logo Objektverwaltung Probst GmbH" />
+          </div>
 
-        <details>
-          <summary>
-            <h2 class="company-title">Objektverwaltung Probst GmbH</h2>
-            <div class="open-hint">Kontakt anzeigen</div>
-          </summary>
+          <details>
+            <summary>
+              <h2 class="company-title">Objektverwaltung Probst GmbH</h2>
+              <div class="open-hint">Kontakt anzeigen</div>
+            </summary>
 
-          <div class="panel-wrap">
-            <div class="panel">
-              <div class="details-block">
-                <div class="detail">
-                  <div class="label">Telefon</div>
-                  <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">E-Mail</div>
-                  <div class="value"><a href="mailto:objekt@verwaltung-probst.de">objekt@verwaltung-probst.de</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">Adresse</div>
-                  <div class="value">Daimlerstraße 33<br />87437 Kempten</div>
-                </div>
-              </div>
+            <div class="panel-wrap">
+              <div class="panel-clip">
+                <div class="panel">
+                  <div class="details-block">
+                    <div class="detail">
+                      <div class="label">Telefon</div>
+                      <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">E-Mail</div>
+                      <div class="value"><a href="mailto:objekt@verwaltung-probst.de">objekt@verwaltung-probst.de</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">Adresse</div>
+                      <div class="value">Daimlerstraße 33<br />87437 Kempten</div>
+                    </div>
+                  </div>
 
-              <div class="actions">
-                <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
-                <a class="btn" href="mailto:objekt@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
-                <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Daimlerstra%C3%9Fe+33,+87437+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  <div class="actions">
+                    <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
+                    <a class="btn" href="mailto:objekt@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
+                    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Daimlerstra%C3%9Fe+33,+87437+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </article>
 
       <article class="company vermoegen">
-        <div class="logo-area">
-          <img src="Logo_Vermoegensverwaltung_Probst_RGB.png" alt="Logo Vermögensverwaltung Probst GmbH" />
-        </div>
+        <div class="company-inner">
+          <div class="logo-area">
+            <img src="Logo_Vermoegensverwaltung_Probst_RGB.png" alt="Logo Vermögensverwaltung Probst GmbH" />
+          </div>
 
-        <details>
-          <summary>
-            <h2 class="company-title">Vermögensverwaltung Probst GmbH</h2>
-            <div class="open-hint">Kontakt anzeigen</div>
-          </summary>
+          <details>
+            <summary>
+              <h2 class="company-title">Vermögensverwaltung Probst GmbH</h2>
+              <div class="open-hint">Kontakt anzeigen</div>
+            </summary>
 
-          <div class="panel-wrap">
-            <div class="panel">
-              <div class="details-block">
-                <div class="detail">
-                  <div class="label">Telefon</div>
-                  <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">E-Mail</div>
-                  <div class="value"><a href="mailto:vermoegen@verwaltung-probst.de">vermoegen@verwaltung-probst.de</a></div>
-                </div>
-                <div class="detail">
-                  <div class="label">Adresse</div>
-                  <div class="value">Daimlerstraße 33<br />87437 Kempten</div>
-                </div>
-              </div>
+            <div class="panel-wrap">
+              <div class="panel-clip">
+                <div class="panel">
+                  <div class="details-block">
+                    <div class="detail">
+                      <div class="label">Telefon</div>
+                      <div class="value"><a href="tel:+4917660393610">+49 176 60393610</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">E-Mail</div>
+                      <div class="value"><a href="mailto:vermoegen@verwaltung-probst.de">vermoegen@verwaltung-probst.de</a></div>
+                    </div>
+                    <div class="detail">
+                      <div class="label">Adresse</div>
+                      <div class="value">Daimlerstraße 33<br />87437 Kempten</div>
+                    </div>
+                  </div>
 
-              <div class="actions">
-                <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
-                <a class="btn" href="mailto:vermoegen@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
-                <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Daimlerstra%C3%9Fe+33,+87437+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  <div class="actions">
+                    <a class="btn" href="tel:+4917660393610"><span class="btn-icon icon-phone"></span><span>Jetzt anrufen</span></a>
+                    <a class="btn" href="mailto:vermoegen@verwaltung-probst.de"><span class="btn-icon icon-mail"></span><span>Jetzt E-Mail schreiben</span></a>
+                    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Daimlerstra%C3%9Fe+33,+87437+Kempten" target="_blank" rel="noopener noreferrer"><span class="btn-icon icon-map"></span><span>In Google Maps öffnen</span></a>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
-        </details>
+          </details>
+        </div>
       </article>
     </section>
   </main>
