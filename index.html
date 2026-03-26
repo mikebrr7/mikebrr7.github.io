@@ -358,28 +358,32 @@
 
     .panel-wrap {
       overflow: hidden;
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.42s ease;
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+      transition:
+        max-height 0.48s ease,
+        opacity 0.24s ease,
+        margin-top 0.24s ease;
+    }
+    
+    .company details[open] .panel-wrap {
+      max-height: 900px;
+      opacity: 1;
       margin-top: 20px;
     }
-
-    .company details[open] .panel-wrap {
-      grid-template-rows: 1fr;
-    }
-
+    
     .panel-clip {
-      min-height: 0;
       overflow: hidden;
     }
-
+    
     .panel {
       transform: translateX(34px);
       opacity: 0;
       transition: transform 0.36s ease, opacity 0.28s ease;
       will-change: transform, opacity;
     }
-
+    
     .company details[open] .panel {
       transform: translateX(0);
       opacity: 1;
