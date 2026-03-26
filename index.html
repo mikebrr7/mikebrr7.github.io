@@ -23,7 +23,6 @@
       --bar-muted: rgba(255, 255, 255, 0.76);
 
       --shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
-      --radius: 24px;
     }
 
     * {
@@ -246,16 +245,16 @@
     .company.vermoegen { --accent: var(--vermoegen); }
 
     .logo-area {
-      height: 190px;
+      height: 170px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
 
     .logo-area img {
-      max-height: 180px;
-      max-width: 100%;
+      max-height: 150px;
+      max-width: 92%;
       object-fit: contain;
       display: block;
       margin: 0 auto;
@@ -265,7 +264,10 @@
     .company summary {
       list-style: none;
       cursor: pointer;
-      display: block;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .company summary::-webkit-details-marker {
@@ -274,8 +276,8 @@
 
     .company-title {
       margin: 0;
-      font-size: clamp(22px, 1.6vw, 30px);
-      line-height: 1.12;
+      font-size: clamp(19px, 1.35vw, 24px);
+      line-height: 1.14;
       font-weight: 800;
       color: var(--accent);
       text-align: center;
@@ -453,7 +455,7 @@
       }
 
       .companies {
-        gap: 48px;
+        gap: 56px;
         transform: translateX(-24px);
       }
 
@@ -485,7 +487,7 @@
         width: 100%;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 54px;
+        gap: 76px;
         transform: none;
       }
 
@@ -501,14 +503,11 @@
 
       .logo-area {
         height: auto;
+        margin-bottom: 14px;
       }
 
       .logo-area img {
-        max-height: 170px;
-      }
-
-      .panel {
-        transform: translateX(0);
+        max-height: 140px;
       }
     }
 
@@ -536,8 +535,12 @@
         padding: 24px 0 44px;
       }
 
+      .companies {
+        gap: 88px;
+      }
+
       .company-title {
-        font-size: 26px;
+        font-size: 24px;
       }
 
       .company,
@@ -545,6 +548,10 @@
       .actions {
         width: 100%;
         max-width: 100%;
+      }
+
+      .logo-area img {
+        max-height: 132px;
       }
 
       .footer-inner {
@@ -633,7 +640,7 @@
           <img src="Logo_Objektverwaltung_Probst_RGB.png" alt="Logo Objektverwaltung Probst GmbH" />
         </div>
 
-        <details open>
+        <details>
           <summary>
             <h2 class="company-title">Objektverwaltung Probst GmbH</h2>
             <div class="open-hint">Kontakt anzeigen</div>
